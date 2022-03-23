@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/moble/Desktop/diary-main/app/src/main/res/layout/fragment1.xml" value="0.3425925925925926" />
+        <entry key="..\:/ktk/My Diary/app/src/main/res/drawable/select_button.xml" value="0.38229166666666664" />
+        <entry key="..\:/ktk/My Diary/app/src/main/res/layout/activity_main.xml" value="0.3619791666666667" />
+        <entry key="..\:/ktk/My Diary/app/src/main/res/layout/fragment1.xml" value="0.25" />
+        <entry key="..\:/ktk/My Diary/app/src/main/res/layout/fragment2.xml" value="0.36614583333333334" />
+        <entry key="..\:/ktk/My Diary/app/src/main/res/layout/fragment3.xml" value="0.36614583333333334" />
+        <entry key="..\:/ktk/My Diary/app/src/main/res/layout/note_item.xml" value="0.33" />
+        <entry key="..\:/ktk/My Diary/app/src/main/res/menu/menu.xml" value="0.3619791666666667" />
+        <entry key="..\:/ktk/My Diary/app/src/main/res/menu/menu_bottom.xml" value="0.36614583333333334" />
+        <entry key="..\:/ktk/diary-main/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/ktk/diary-main/app/src/main/res/layout/fragment1.xml" value="0.36614583333333334" />
+        <entry key="..\:/ktk/diary-main/app/src/main/res/layout/fragment2.xml" value="0.36614583333333334" />
+        <entry key="..\:/ktk/diary-main/app/src/main/res/layout/fragment3.xml" value="0.36614583333333334" />
+        <entry key="..\:/ktk/diary-main/app/src/main/res/layout/note_item.xml" value="0.36614583333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
