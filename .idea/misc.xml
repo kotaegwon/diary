@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ktk/diary-main/app/src/main/res/drawable/select_button.xml" value="0.38229166666666664" />
         <entry key="..\:/ktk/diary-main/app/src/main/res/layout/fragment1.xml" value="0.25925925925925924" />
         <entry key="..\:/ktk/diary-main/app/src/main/res/layout/fragment2.xml" value="0.25925925925925924" />
         <entry key="..\:/ktk/diary-main/app/src/main/res/layout/fragment3.xml" value="0.25925925925925924" />
+        <entry key="..\:/ktk/diary-main/app/src/main/res/layout/note_item.xml" value="0.25" />
       </map>
     </option>
   </component>

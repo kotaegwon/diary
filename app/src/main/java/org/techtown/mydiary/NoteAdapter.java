@@ -1,5 +1,7 @@
 package org.techtown.mydiary;
 
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,33 +12,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> implements OnNoteItemClickListener{
-    ArrayList<Note> items=new ArrayList<Note>();
+public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>
+        implements OnNoteItemClickListener {
+    ArrayList<Note> items = new ArrayList<Note>();
 
     OnNoteItemClickListener listener;
 
-    //내용 중심인지 사진 중심인지 판단하기 위한 변수
-    int layoutType=0;
+    int layoutType = 0;
 
-    //어댑터 클래스 상속시 구현해야 할 함수 3가지 : onCreateViewHoloder, onBindViewHolder, getItemCount
-    //리사이클뷰에 들어갈 뷰  홀더를 할당하는 함수, 뷰 홀더는 실제 레이아웃 파일과 매핑되어야하며, extends의 Adapter<>
-    //에서 <>안에 들어가는 타입을 따른다
     @NonNull
     @Override
-    //뷰홀더 생성
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+        View itemView = inflater.inflate(R.layout.note_item, viewGroup, false);
 
-        LayoutInflater inflater=LayoutInflater.from(viewGroup.getContext());
-        View itemview=inflater.inflate(R.layout.note_item,viewGroup,false);
-        return  new ViewHolder(itemview,this,layoutType);
+        return new ViewHolder(itemView, this, layoutType);
     }
 
-    //실제 각 뷰 홀더에 데이터를 연결해주는 함수
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         Note item = items.get(position);
@@ -48,78 +42,79 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> im
     public int getItemCount() {
         return items.size();
     }
-    public void setItems(ArrayList<Note> items){
-        this.items=items;
-    }
-    //아이템 반환
-    public Note getItem(int position){
-        return items.get(position);
-    }
-    //아이템 추가
-    public void addItem(Note item){
+
+    public void addItem(Note item) {
         items.add(item);
     }
 
-    public void setOnitemClickListener(OnNoteItemClickListener listener){
-        this.listener=listener;
+    public void setItems(ArrayList<Note> items) {
+        this.items = items;
+    }
+
+    public Note getItem(int position) {
+        return items.get(position);
+    }
+
+    public void setOnItemClickListener(OnNoteItemClickListener listener) {
+        this.listener = listener;
     }
 
     @Override
-    public void onItemClick(NoteAdapter.ViewHolder holder, View view, int position) {
-        if(listener != null){
+    public void onItemClick(ViewHolder holder, View view, int position) {
+        if (listener != null) {
             listener.onItemClick(holder, view, position);
         }
     }
 
-    public void switchLayout(int position){
-        layoutType=position;
+    public void switchLayout(int position) {
+        layoutType = position;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        LinearLayout layout1;
+        LinearLayout layout2;
 
-        LinearLayout ll1;
-        LinearLayout ll2;
+        ImageView moodImageView;
+        ImageView moodImageView2;
 
-        ImageView moodIV1;
-        ImageView moodTV2;
+        ImageView pictureExistsImageView;
+        ImageView pictureImageView;
 
-        ImageView pictureExistsIV;
-        ImageView pictureIV;
+        ImageView weatherImageView;
+        ImageView weatherImageView2;
 
-        ImageView weatherIV01;
-        ImageView weatherIV02;
+        TextView contentsTextView;
+        TextView contentsTextView2;
 
-        TextView contentsTV1;
-        TextView contentsTV2;
+        TextView locationTextView;
+        TextView locationTextView2;
 
-        TextView locationTV1;
-        TextView locationTV2;
+        TextView dateTextView;
+        TextView dateTextView2;
 
-        TextView dateTV1;
-        TextView dateTV2;
-
-        public ViewHolder(@NonNull View itemView, NoteAdapter noteAdapter, int layoutType) {
+        public ViewHolder(View itemView, final OnNoteItemClickListener listener, int layoutType) {
             super(itemView);
-            ll1=itemView.findViewById(R.id.ll_01);
-            ll2=itemView.findViewById(R.id.ll_02);
 
-            moodIV1=itemView.findViewById(R.id.moodIV);
-            moodTV2=itemView.findViewById(R.id.moodIV02);
+            layout1 = itemView.findViewById(R.id.ll_01);
+            layout2 = itemView.findViewById(R.id.ll_02);
 
-            pictureExistsIV=itemView.findViewById(R.id.pictureExistsIV);
-            pictureIV=itemView.findViewById(R.id.pictureIV);
+            moodImageView = itemView.findViewById(R.id.moodIV);
+            moodImageView2 = itemView.findViewById(R.id.moodIV02);
 
-            weatherIV01= itemView.findViewById(R.id.weatherIV01);
-            weatherIV02= itemView.findViewById(R.id.weatherIV02);
+            pictureExistsImageView = itemView.findViewById(R.id.pictureExistsIV);
+            pictureImageView = itemView.findViewById(R.id.pictureIV);
 
-            contentsTV1=itemView.findViewById(R.id.contentTV_1);
-            contentsTV2=itemView.findViewById(R.id.contentTV_2);
+            weatherImageView = itemView.findViewById(R.id.weatherIV01);
+            weatherImageView2 = itemView.findViewById(R.id.weatherIV02);
 
-            locationTV1=itemView.findViewById(R.id.locationTv01);
-            locationTV2=itemView.findViewById(R.id.locationTv02);
+            contentsTextView = itemView.findViewById(R.id.contentTV_1);
+            contentsTextView2 = itemView.findViewById(R.id.contentTV_2);
 
-            dateTV1=itemView.findViewById(R.id.dateTv01);
-            dateTV2=itemView.findViewById(R.id.dateTv02);
+            locationTextView = itemView.findViewById(R.id.locationTv01);
+            locationTextView2 = itemView.findViewById(R.id.locationTv02);
+
+            dateTextView = itemView.findViewById(R.id.dateTv01);
+            dateTextView2 = itemView.findViewById(R.id.dateTv02);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -131,19 +126,123 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> im
                     }
                 }
             });
+
             setLayoutType(layoutType);
         }
 
         public void setItem(Note item) {
-            String mood=item.getMood();
-            int moodIndex=Integer.parseInt(mood);
+            // set mood
+            String mood = item.getMood();
+            int moodIndex = Integer.parseInt(mood);
             setMoodImage(moodIndex);
+
+            // set picture exists
+            String picturePath = item.getPicture();
+            Log.d("NoteAdapter", "picturePath -> " + picturePath);
+
+            if (picturePath != null && !picturePath.equals("")) {
+                pictureExistsImageView.setVisibility(View.VISIBLE);
+                pictureImageView.setVisibility(View.VISIBLE);
+                pictureImageView.setImageURI(Uri.parse("file://" + picturePath));
+
+            } else {
+                pictureExistsImageView.setVisibility(View.GONE);
+                pictureImageView.setImageResource(R.drawable.noimagefound);
+
+            }
+
+            // set weather
+            String weather = item.getWeather();
+            int weatherIndex = Integer.parseInt(weather);
+            setWeatherImage(weatherIndex);
+
+            contentsTextView.setText(item.getContents());
+            contentsTextView2.setText(item.getContents());
+
+            locationTextView.setText(item.getAddress());
+            locationTextView2.setText(item.getAddress());
+
+            dateTextView.setText(item.getCreateDateStr());
+            dateTextView2.setText(item.getCreateDateStr());
         }
 
-        private void setMoodImage(int moodIndex) {
+
+        public void setMoodImage(int moodIndex) {
+            switch(moodIndex) {
+                case 0:
+                    moodImageView.setImageResource(R.drawable.smile1_48);
+                    moodImageView2.setImageResource(R.drawable.smile1_48);
+                    break;
+                case 1:
+                    moodImageView.setImageResource(R.drawable.smile2_48);
+                    moodImageView2.setImageResource(R.drawable.smile2_48);
+                    break;
+                case 2:
+                    moodImageView.setImageResource(R.drawable.smile3_48);
+                    moodImageView2.setImageResource(R.drawable.smile3_48);
+                    break;
+                case 3:
+                    moodImageView.setImageResource(R.drawable.smile4_48);
+                    moodImageView2.setImageResource(R.drawable.smile4_48);
+                    break;
+                case 4:
+                    moodImageView.setImageResource(R.drawable.smile5_48);
+                    moodImageView2.setImageResource(R.drawable.smile5_48);
+                    break;
+                default:
+                    moodImageView.setImageResource(R.drawable.smile3_48);
+                    moodImageView2.setImageResource(R.drawable.smile3_48);
+                    break;
+            }
+        }
+
+        public void setWeatherImage(int weatherIndex) {
+            switch(weatherIndex) {
+                case 0:
+                    weatherImageView.setImageResource(R.drawable.weather_icon_1);
+                    weatherImageView2.setImageResource(R.drawable.weather_icon_1);
+                    break;
+                case 1:
+                    weatherImageView.setImageResource(R.drawable.weather_icon_2);
+                    weatherImageView2.setImageResource(R.drawable.weather_icon_2);
+                    break;
+                case 2:
+                    weatherImageView.setImageResource(R.drawable.weather_icon_3);
+                    weatherImageView2.setImageResource(R.drawable.weather_icon_3);
+                    break;
+                case 3:
+                    weatherImageView.setImageResource(R.drawable.weather_icon_4);
+                    weatherImageView2.setImageResource(R.drawable.weather_icon_4);
+                    break;
+                case 4:
+                    weatherImageView.setImageResource(R.drawable.weather_icon_5);
+                    weatherImageView2.setImageResource(R.drawable.weather_icon_5);
+                    break;
+                case 5:
+                    weatherImageView.setImageResource(R.drawable.weather_icon_6);
+                    weatherImageView2.setImageResource(R.drawable.weather_icon_6);
+                    break;
+                case 6:
+                    weatherImageView.setImageResource(R.drawable.weather_icon_7);
+                    weatherImageView2.setImageResource(R.drawable.weather_icon_7);
+                    break;
+                default:
+                    weatherImageView.setImageResource(R.drawable.weather_icon_1);
+                    weatherImageView2.setImageResource(R.drawable.weather_icon_1);
+                    break;
+            }
         }
 
         public void setLayoutType(int layoutType) {
+            if (layoutType == 0) {
+                layout1.setVisibility(View.VISIBLE);
+                layout2.setVisibility(View.GONE);
+            } else if (layoutType == 1) {
+                layout1.setVisibility(View.GONE);
+                layout2.setVisibility(View.VISIBLE);
+            }
         }
+
     }
+
 }

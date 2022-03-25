@@ -5,10 +5,10 @@ public class Note {
     String address;
     String locationX;
     String locationY;
-    String contents; //내용
-    String mood;     //기분
-    String picture;  //사진 이미지의 경로
-    String createDateStr; //일기 작성 일자
+    String contents;
+    String mood;
+    String picture;
+    String createDateStr;
 
     public Note(int _id, String weather, String address, String locationX, String locationY, String contents, String mood, String picture, String createDateStr){
         this._id=_id;

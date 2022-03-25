@@ -35,7 +35,7 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/select_button"
             android:text="오늘 작성"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

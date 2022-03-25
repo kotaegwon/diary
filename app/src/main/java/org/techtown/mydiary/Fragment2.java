@@ -29,7 +29,6 @@ import androidx.fragment.app.Fragment;
 import com.github.channguyen.rsv.RangeSliderView;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
@@ -165,6 +164,39 @@ public class Fragment2 extends Fragment {
         rangeSliderView.setInitialIndex(2);
     }
 
+
+    public void setWeather(String data){
+        if(data != null){
+            if(data.equals("맑음")){
+                weatherIcon.setImageResource(R.drawable.weather_icon_1);
+            }else if(data.equals("구름 조금")){
+                weatherIcon.setImageResource(R.drawable.weather_icon_2);
+            }else if(data.equals("구름 많음")){
+                weatherIcon.setImageResource(R.drawable.weather_icon_3);
+            }else if(data.equals("흐림")){
+                weatherIcon.setImageResource(R.drawable.weather_icon_4);
+            }else if(data.equals("비")){
+                weatherIcon.setImageResource(R.drawable.weather_icon_5);
+            }else if(data.equals("눈/비")){
+                weatherIcon.setImageResource(R.drawable.weather_icon_6);
+            }else if(data.equals("눈")) {
+                weatherIcon.setImageResource(R.drawable.weather_icon_7);
+            }else{
+                Log.d("Fragment2","Unknown weather string"+data);
+            }
+        }
+    }
+
+
+
+    public void setAddress(String data) {
+        locationTextView.setText(data);
+    }
+
+    public void setDateString(String dateString) {
+        dateTextView.setText(dateString);
+    }
+
     public void showDialog(int id){
         AlertDialog.Builder builder=null;
 
@@ -290,7 +322,7 @@ public class Fragment2 extends Fragment {
 
                     Log.d(TAG, "resultCode : "+resultCode);
 
-                    resultPhotoBitmap=decodeSampleBitmapReomResource(file, pictureImageView.getWidth(), pictureImageView.getHeight());
+                    resultPhotoBitmap=decodeSampleBitmapFromResource(file, pictureImageView.getWidth(), pictureImageView.getHeight());
                     pictureImageView.setImageBitmap(resultPhotoBitmap);
                     break;
 
@@ -317,7 +349,7 @@ public class Fragment2 extends Fragment {
         }
     }
 
-    public static Bitmap decodeSampleBitmapReomResource(File res, int reqWidth, int reqHeight){
+    public static Bitmap decodeSampleBitmapFromResource(File res, int reqWidth, int reqHeight){
         final BitmapFactory.Options options=new BitmapFactory.Options();
         options.inJustDecodeBounds=true;
         BitmapFactory.decodeFile(res.getAbsolutePath(), options);
@@ -353,34 +385,4 @@ public class Fragment2 extends Fragment {
 
     }
 
-
-    public void setWeather(String data){
-        if(data != null){
-            if(data.equals("맑음")){
-                weatherIcon.setImageResource(R.drawable.weather_icon_1);
-            }else if(data.equals("구름 조금")){
-                weatherIcon.setImageResource(R.drawable.weather_icon_2);
-            }else if(data.equals("구름 많음")){
-                weatherIcon.setImageResource(R.drawable.weather_icon_3);
-            }else if(data.equals("흐림")){
-                weatherIcon.setImageResource(R.drawable.weather_icon_4);
-            }else if(data.equals("비")){
-                weatherIcon.setImageResource(R.drawable.weather_icon_5);
-            }else if(data.equals("눈/비")){
-                weatherIcon.setImageResource(R.drawable.weather_icon_6);
-            }else if(data.equals("눈")) {
-                weatherIcon.setImageResource(R.drawable.weather_icon_7);
-            }else{
-                Log.d("Fragment2","Unknown weather string"+data);
-            }
-        }
-    }
-
-    public void setAddress(String data) {
-        locationTextView.setText(data);
-    }
-
-    public void setDateString(String dateString) {
-        dateTextView.setText(dateString);
-    }
 }

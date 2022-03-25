@@ -1,13 +1,9 @@
 package org.techtown.mydiary;
 
-import static java.sql.DriverManager.println;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.annotation.SuppressLint;
-import android.app.DownloadManager;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
@@ -37,7 +33,6 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -48,9 +43,9 @@ public class MainActivity extends AppCompatActivity implements OnTabItemSelected
 
     private static final String TAG = "MainActivity";
 
-    Fragment fragment1;
-    Fragment fragment2;
-    Fragment fragment3;
+    Fragment1 fragment1;
+    Fragment2 fragment2;
+    Fragment3 fragment3;
 
     BottomNavigationView bottomNavigationView;
 
@@ -210,8 +205,8 @@ public class MainActivity extends AppCompatActivity implements OnTabItemSelected
             String message="현재 위치 -> 위도 : "+latitude+"\n 경로 : "+longtitude;
             println(message);
 
-//            getCurrentWeather();
-//            getCuurentAddress();
+            getCurrentWeather();
+            getCuurentAddress();
         }
 
         @Override
